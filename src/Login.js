@@ -39,17 +39,20 @@ export default function Login() {
 
     return(
 
-    <div>
+    <div id='loginContainer'>
+        <h1 className='login'>LOGIN</h1>
         <br />
         <div>
-            <input type="text" value={formState.username} onChange={(e)=>{updateInput(e, "username")}} placeholder= " Enter Username" />
+            <input className="username" type="text" value={formState.username} onChange={(e)=>{updateInput(e, "username")}} placeholder= " Enter Username" />
         </div>
         <div>
-            <input type="text" value={formState.password} onChange={(e)=>{updateInput(e, "password")}} placeholder="Enter Password"/>
+            <input className="password" type="text" value={formState.password} onChange={(e)=>{updateInput(e, "password")}} placeholder="Enter Password"/>
+            
         </div>
-        <button onClick={submitLoginForm}>Sign In</button>
+
+        <button className="signIn" onClick={submitLoginForm}>SIGN IN</button>
         <Link to={'/signup'}>
-            <button>Sign Up</button>
+            <button className='signUp'>CREATE ACCOUNT</button>
         </Link>
     </div>
     )

@@ -44,24 +44,25 @@ export default function SignUp() {
 
     return(
 
-    <div>
+    <div id='loginContainer'>
+        <h1 className='login'>CREATE ACCOUNT</h1>
         <br />
         <div>
-            <input type="text" value={formState.username} onChange={(e)=>{updateInput(e, "username")}} placeholder= " Enter Username" />
+            <input className="username" type="text" value={formState.username} onChange={(e)=>{updateInput(e, "username")}} placeholder= " Enter Username" />
         </div>
         <div>
-            <input type="text" value={formState.password} onChange={(e)=>{updateInput(e, "password")}} placeholder="Enter Password"/>
+            <input className="username" type="text" value={formState.password} onChange={(e)=>{updateInput(e, "password")}} placeholder="Enter Password"/>
         </div>
         <div>
-            <input type="text" value={formState.email} onChange={(e)=>{updateInput(e, "email")}} placeholder="Enter email"/>
+            <input className="username" type="text" value={formState.email} onChange={(e)=>{updateInput(e, "email")}} placeholder="Enter email"/>
         </div>
         <div>
-            <input type="text" value={formState.userWeight} onChange={(e)=>{updateInput(e, "userWeight")}} placeholder="Enter Weight"/>
+            <input className="username" type="text" value={formState.userWeight} onChange={(e)=>{updateInput(e, "userWeight")}} placeholder="Enter Weight"/>
         </div>
         <div>
-            <input type="text" value={formState.userHeight} onChange={(e)=>{updateInput(e, "userHeight")}} placeholder="Enter Height"/>
+            <input className="username" type="text" value={formState.userHeight} onChange={(e)=>{updateInput(e, "userHeight")}} placeholder="Enter Height"/>
         </div>
-        <button onClick={submitSignupForm}>Submit</button>
+        <button className="signIn" onClick={submitSignupForm}>CREATE ACCOUNT</button>
     </div>
     )
 }
