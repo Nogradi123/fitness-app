@@ -6,14 +6,14 @@ import { Link } from 'react-router-dom';
 
 
 
-export default function ExerciseLog() {
+export default function NutritionLog() {
 
-    const [exercise, setExercise] = useState([]);
+    const [meals, setMeal] = useState([]);
 
-    const obtainExercises = () => {
-        axios.get("http://localhost:4200/exercise/exercise")
+    const obtainMeals = () => {
+        axios.get("http://localhost:4200/nutrition/mealItem")
         .then((response) => {
-            setExercise(response.data);
+            setMeal(response.data);
         })
         .catch((err) => {
             console.log(err);
@@ -22,31 +22,31 @@ export default function ExerciseLog() {
     }
 
     useEffect(() => {
-        obtainExercises();
+        obtainMeals();
     }, [])
 
-    const deleteExercise = (theID) =>{
+    const deleteMealEntry = (theID) =>{
         console.log(theID);
         axios.post("http://localhost:4200/exercise/delete", {id:theID})
         .then((response)=>{
             console.log(response);
-            obtainExercises();
+            obtainMeals();
         })
         .catch((err)=>{
             console.log(err);
         })
     }
 
-    console.log({exercise})
-    const listOfExercises = exercise.map((eachExercise) => {
+    console.log({meals})
+    const listOfExercises = meals.map((eachMeal) => {
         return (
-            <div key={eachExercise._id}>
+            <div key={eachMeal._id}>
             
                 <table className="exercise-list">
                     <tr>
-                    <button onClick={() => {deleteExercise(eachExercise._id)}}>X</button>
-                        <Link to={"/exercise/"+eachExercise._id}>
-                            <td>{eachExercise.exerciseName}</td>
+                    <button onClick={() => {deleteMealEntry(eachMeal._id)}}>X</button>
+                        <Link to={"/nutrition/"+eachMeal._id}>
+                            <td>{eachMeal.foodName}</td>
                         </Link>
                     </tr>
                 </table>
@@ -55,7 +55,7 @@ export default function ExerciseLog() {
     })
   return (
     <div>
-        <Link to={'/createExercise'}>
+        <Link to={'/createMealEntry'}>
             <button>+</button>
         </Link>
         {listOfExercises}

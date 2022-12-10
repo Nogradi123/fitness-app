@@ -30,7 +30,7 @@ export default function CreateExercise(props) {
     })
     .then((response) => {
       props.obtainExercises();
-      navigate('/exerciseLog')
+      navigate('/')
     })
     .catch((err)=>{
       console.log({err, success: false})
@@ -65,7 +65,7 @@ export default function CreateExercise(props) {
                 Amount of Rest 
                 <input type="text" value={formState.rest} onChange={(e)=>{updateInput(e,"rest")}} />
             </div>
-            <button onClick={sendExerciseInfo} >Submit</button>
+            <button onClick={sendExerciseInfo}>Submit</button>
     </div>
   )
 }

@@ -14,8 +14,8 @@ export default function Navbar() {
                 <div class="dropdown-content">
                     <a href='/about'>About</a>
                     <a href='/test'>Testimonials</a>
-                    <a href='#'>Exercises</a>
-                    <a href='#'>Nutrition</a>
+                    <a href='/library'>Exercise Library</a>
+                    <a href='#'>Recipie Guide</a>
                 </div>
             </div>
             <Link to={'/login'}>
