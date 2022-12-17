@@ -24,7 +24,7 @@ export default function CreateExercise(props) {
 
 
   const sendExerciseInfo = () => {
-    axios.post("http://localhost:4200/exercise/create", {
+    axios.post("https://fittrackserver.onrender.com/exercise/create", {
       type: formState.type,
       exerciseName: formState.exerciseName,
       sets: formState.sets,

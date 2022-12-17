@@ -13,7 +13,7 @@ const options = {
     url: 'https://recipe-by-api-ninjas.p.rapidapi.com/v1/recipe',
     params: {query: (search)},
     headers: {
-      'X-RapidAPI-Key': process.env.APIKEY,
+      'X-RapidAPI-Key': '7551bd998fmshcd2c2220e76f8e9p1add01jsne453ce90f67f',
       'X-RapidAPI-Host': 'recipe-by-api-ninjas.p.rapidapi.com'
     }
   };

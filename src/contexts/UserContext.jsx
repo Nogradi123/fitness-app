@@ -12,7 +12,7 @@ export const UserProvider = ({children}) => {
     const [theUser, setTheUser] = useState(null);
 
     const getUserInfo = () => {
-        axios.get("http://localhost:4200/auth/serializeuser", {withCredentials: true})
+        axios.get("https://fittrackserver.onrender.com/auth/serializeuser", {withCredentials: true})
         .then((response) => {
             setTheUser(response.data)
         })
@@ -26,7 +26,7 @@ export const UserProvider = ({children}) => {
     }, [])
 
     const logout = () =>{
-        axios.post("http://localhost:4200/auth/logout",{}, {withCredentials: true})
+        axios.post("https://fittrackserver.onrender.com/auth/logout",{}, {withCredentials: true})
         .then((response)=>{
         console.log(response.data)
         if(response.data.message === "successfully logged out")setTheUser(null);

@@ -14,7 +14,7 @@ export default function NutritionLog({meals, obtainMeals}) {
 
     const deleteMealEntry = (theID) =>{
         console.log(theID);
-        axios.post("http://localhost:4200/nutrition/delete", {id:theID})
+        axios.post("https://fittrackserver.onrender.com/nutrition/delete", {id:theID})
         .then((response)=>{
             console.log(response);
             obtainMeals();

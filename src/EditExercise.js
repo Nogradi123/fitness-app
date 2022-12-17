@@ -19,7 +19,7 @@ export default function EditExercise(props) {
     };
 
     const submitForm = () => {
-        axios.post("http://localhost:4200/exercise/edit/"+props.exercise._id, {
+        axios.post("https://fittrackserver.onrender.com/exercise/edit/"+props.exercise._id, {
             type: formState.type,
             exerciseName: formState.exerciseName,
             sets: formState.sets,
