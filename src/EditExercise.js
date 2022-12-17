@@ -2,8 +2,10 @@ import React from 'react'
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 export default function EditExercise(props) {
+    console.log(props)
     const [formState, setFormState] = useState(props.exercise);
     const navigate = useNavigate();
     
@@ -34,30 +36,30 @@ export default function EditExercise(props) {
 return (
     <div>
           <div>
-            <p><button onClick={endEdit}>X</button></p>
+            <p><Button onClick={endEdit}>x</Button></p>
 
             </div>
         <div>
-            Type:
+            Type - 
             <input value={formState.type} onChange={(e)=>{updateInput(e, "type")}} />
         </div>
         <div>
-                Number of Sets
+                Number of Sets - 
                 <input type="text" value={formState.sets} onChange={(e)=>{updateInput(e,"sets")}} />
             </div>
             <div>
-                Weight
+                Weight - 
                 <input type="text" value={formState.weight} onChange={(e)=>{updateInput(e,"weight")}} />
             </div>
             <div>
-                Number of Repetition
+                Number of Repetition - 
                 <input type="text" value={formState.repetition} onChange={(e)=>{updateInput(e,"repetition")}} />
             </div>
             <div>
-                Amount of Rest 
+                Amount of Rest -
                 <input type="text" value={formState.rest} onChange={(e)=>{updateInput(e,"rest")}} />
             </div>
-        <button onClick={submitForm}>Submit</button>
+        <Button onClick={submitForm}>Submit</Button>
     </div>
   )
 }

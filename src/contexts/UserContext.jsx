@@ -1,11 +1,14 @@
 import React from 'react';
 import { createContext, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import axios from "axios";
 
 const UserContext = createContext();
 
 export const UserProvider = ({children}) => {
+
+    const navigate = useNavigate();
     const [theUser, setTheUser] = useState(null);
 
     const getUserInfo = () => {
@@ -27,11 +30,13 @@ export const UserProvider = ({children}) => {
         .then((response)=>{
         console.log(response.data)
         if(response.data.message === "successfully logged out")setTheUser(null);
+        navigate("/")
         })
         .catch((err)=>{
         console.log(err);
         })
     }
+
 
     return(
         <UserContext.Provider value={{ theUser, setTheUser, getUserInfo, logout }}>

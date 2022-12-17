@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { exerciseOptions, fetchData } from './fetchData';
+import Card from 'react-bootstrap/Card'
 
 export default function SearchExercises() {
   const [search, setSearch] = useState('');
@@ -24,18 +25,36 @@ export default function SearchExercises() {
 
   const allExercises = exercises.map((theExercise) => {
     return (
-      <div>
-        <h3>{theExercise.name}</h3>
-        <img src={theExercise.gifUrl} alt="theImg" />
-      </div>
+    
+
+        <Card className = "search-card" style={{width: '18rem'}}>
+          <Card.Img variant='top' src={theExercise.gifUrl} className='cardImg'/>
+          <Card.Body>
+            <Card.Title>{theExercise.name.toUpperCase()}</Card.Title>
+            <Card.Text>
+              Body Part: {theExercise.bodyPart}<br/>
+              Target Muscle: {theExercise.target}<br/>
+              Equipment Needed: {theExercise.equipment}
+            </Card.Text>
+          </Card.Body>
+        </Card>
+      
+
     )
 })
 
   return (
-    <div>
-        <input type="text" value={search} onChange={(e) => setSearch(e.target.value.toLowerCase())} />
-        <button onClick={handleSearch}>Search</button>
+    <>
+      <div className='search-header'>
+        <h1>Search Exercises</h1>
+      </div>
+      <div className='exercise-search'>
+        <input className="exercise-input" type="text" value={search} onChange={(e) => setSearch(e.target.value.toLowerCase())} />
+        <button className='search-exercise'onClick={handleSearch}>Search</button>
+      </div>
+      <div className='container'>
         {allExercises}
-    </div>
+      </div>
+    </>
   )
 }

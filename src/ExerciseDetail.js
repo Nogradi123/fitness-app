@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import EditExercise from './EditExercise';
+import Button from 'react-bootstrap/Button';
 
 
 export default function ExerciseDetail({obtainExercises}) {
@@ -49,7 +50,7 @@ export default function ExerciseDetail({obtainExercises}) {
                 <h3>Rest in seconds:{theExercise.rest}</h3>
             </div>
             <div>
-                <button onClick={handleClick}>Edit Inputs</button>
+                <Button onClick={handleClick}>Edit Inputs</Button>
                 {isShown && <EditExercise exercise={theExercise} obtainExercises={obtainExercises} stopEditing={setIsShown}/>}
             </div>
     

@@ -1,12 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import SearchExercises from './SearchExercises';
 
-
-
-
-export default function ExerciseLibrary(props) {
+export default function ExerciseLibrary() {
   return (
-    <div>ExerciseLibrary
+    <div>
         {<SearchExercises />}
     </div>
   )

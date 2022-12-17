@@ -2,32 +2,19 @@ import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import CreateMealEntry from './CreateMealEntry';
+import Button from 'react-bootstrap/Button'
 
 
 
 
-export default function NutritionLog() {
+export default function NutritionLog({meals, obtainMeals}) {
 
-    const [meals, setMeal] = useState([]);
-
-    const obtainMeals = () => {
-        axios.get("http://localhost:4200/nutrition/mealItem")
-        .then((response) => {
-            setMeal(response.data);
-        })
-        .catch((err) => {
-            console.log(err);
-            
-        })
-    }
-
-    useEffect(() => {
-        obtainMeals();
-    }, [])
+    const [modalShow, setModalShow] = React.useState(false);
 
     const deleteMealEntry = (theID) =>{
         console.log(theID);
-        axios.post("http://localhost:4200/exercise/delete", {id:theID})
+        axios.post("http://localhost:4200/nutrition/delete", {id:theID})
         .then((response)=>{
             console.log(response);
             obtainMeals();
@@ -38,27 +25,27 @@ export default function NutritionLog() {
     }
 
     console.log({meals})
-    const listOfExercises = meals.map((eachMeal) => {
+    const listOfMeals = meals.map((eachMeal) => {
         return (
             <div key={eachMeal._id}>
-            
-                <table className="exercise-list">
-                    <tr>
-                    <button onClick={() => {deleteMealEntry(eachMeal._id)}}>X</button>
-                        <Link to={"/nutrition/"+eachMeal._id}>
-                            <td>{eachMeal.foodName}</td>
-                        </Link>
-                    </tr>
-                </table>
+              
+                <Button className="delete" onClick={() => {deleteMealEntry(eachMeal._id)}}>x</Button>
+                <Link to={"/nutrition/"+eachMeal._id} style={{ textDecoration: 'none', color:"black" }}>
+                    {eachMeal.foodName}
+                </Link>
+
             </div>
         )
     })
-  return (
-    <div>
-        <Link to={'/createMealEntry'}>
-            <button>+</button>
-        </Link>
-        {listOfExercises}
-    </div>
-  )
+    return (
+        <div>
+            <div className='add'>
+                <Button variant="primary" onClick={() => setModalShow(true)}>
+                Add Entry
+                </Button>
+                <CreateMealEntry show={modalShow} onHide={() => setModalShow(false)} />
+            </div>
+            {listOfMeals}
+        </div>
+    )
 }

@@ -2,12 +2,15 @@ import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import UserContext from './contexts/UserContext';
+import Button from 'react-bootstrap/Button'
+import CreateExercise from './createExercise';
 
 
 
 export default function ExerciseLog() {
-
+    // const { theUser } = UserContext(UserContext)
+    const [modalShow, setModalShow] = React.useState(false);
     const [exercise, setExercise] = useState([]);
 
     const obtainExercises = () => {
@@ -42,23 +45,24 @@ export default function ExerciseLog() {
         return (
             <div key={eachExercise._id}>
             
-                <table className="exercise-list">
-                    <tr>
-                    <button onClick={() => {deleteExercise(eachExercise._id)}}>X</button>
-                        <Link to={"/exercise/"+eachExercise._id}>
-                            <td>{eachExercise.exerciseName}</td>
+                    <Button className="delete" onClick={() => {deleteExercise(eachExercise._id)}}>x</Button>
+                        <Link to={"/exercise/"+eachExercise._id} style={{ textDecoration: 'none', color:"black" }}>
+                            {eachExercise.exerciseName}
                         </Link>
-                    </tr>
-                </table>
+                    
             </div>
         )
     })
   return (
-    <div>
-        <Link to={'/createExercise'}>
-            <button>+</button>
-        </Link>
+    <>
+        <div className='add'>
+         <Button variant="primary" onClick={() => setModalShow(true)}>
+            Add Exercise
+        </Button>
+        <CreateExercise show={modalShow} onHide={() => setModalShow(false)} />
+
+        </div>
         {listOfExercises}
-    </div>
+    </>
   )
 }

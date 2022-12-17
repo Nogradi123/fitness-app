@@ -1,9 +1,15 @@
-import React from 'react'
+import React from 'react';
+import Header from './Header';
+import Containers from './Container';
+
 
 export default function LandingPage() {
   return (
-    <div>
-        <h1>FitTrack</h1>
-    </div>
+      <div>
+        {<Header />}
+        {<Containers />}
+      </div>
+   
+    
   )
 }
