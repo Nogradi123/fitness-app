@@ -7,7 +7,7 @@ import UserContext from './contexts/UserContext';
 
 export default function Login() {
     const navigate = useNavigate();
-
+    const [passwordShown, setPasswordShown ] = useState(false);
     const { getUserInfo } = useContext(UserContext);
 
     const [formState, setFormState] = useState({
@@ -20,7 +20,7 @@ export default function Login() {
     }
 
     const submitLoginForm = () =>{
-        axios.post("https://fittrackserver.onrender.com/auth/login", {
+        axios.post("http://localhost:4200/auth/login", {
             username: formState.username,
             password: formState.password,
         },
@@ -36,6 +36,10 @@ export default function Login() {
 
     }
 
+    const togglePassword = () => {
+        setPasswordShown(!passwordShown);
+    }
+
     return(
 
     <div id='loginContainer'>
@@ -45,8 +49,9 @@ export default function Login() {
             <input className="username" type="text" value={formState.username} onChange={(e)=>{updateInput(e, "username")}} placeholder= " Enter Username" />
         </div>
         <div>
-            <input className="password" type="text" value={formState.password} onChange={(e)=>{updateInput(e, "password")}} placeholder="Enter Password"/>
-            
+            <input className="password" type={passwordShown ? "text" : "password"} value={formState.password} onChange={(e)=>{updateInput(e, "password")}} placeholder="Enter Password"/>
+            <br/> 
+            <button onClick={togglePassword}>Show Password</button>
         </div>
 
         <button className="signIn" onClick={submitLoginForm}>SIGN IN</button>

@@ -6,7 +6,7 @@ import UserContext from './contexts/UserContext';
 
 export default function SignUp() {
     const navigate = useNavigate();
-
+    
     const { getUserInfo } = useContext(UserContext);
 
     const [formState, setFormState] = useState({
@@ -22,7 +22,7 @@ export default function SignUp() {
     }
 
     const submitSignupForm = () =>{
-        axios.post("https://fittrackserver.onrender.com/auth/signup", {
+        axios.post("http://localhost:4200/auth/signup", {
             username: formState.username,
             password: formState.password,
             email: formState.email,
@@ -51,7 +51,7 @@ export default function SignUp() {
             <input className="username" type="text" value={formState.username} onChange={(e)=>{updateInput(e, "username")}} placeholder= " Enter Username" />
         </div>
         <div>
-            <input className="username" type="text" value={formState.password} onChange={(e)=>{updateInput(e, "password")}} placeholder="Enter Password"/>
+            <input className="username" type="password" value={formState.password} onChange={(e)=>{updateInput(e, "password")}} placeholder="Enter Password"/>
         </div>
         <div>
             <input className="username" type="text" value={formState.email} onChange={(e)=>{updateInput(e, "email")}} placeholder="Enter email"/>

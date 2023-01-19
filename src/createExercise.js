@@ -1,12 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 export default function CreateExercise(props) {
-  const navigate = useNavigate();
+  
 
   const [formState, setFormState] = useState({
     type: "",
@@ -21,10 +20,11 @@ export default function CreateExercise(props) {
     setFormState({...formState, [thingToUpdate]: e.target.value})
   }
 
+  
 
 
   const sendExerciseInfo = () => {
-    axios.post("https://fittrackserver.onrender.com/exercise/create", {
+    axios.post("http://localhost:4200/exercise/create", {
       type: formState.type,
       exerciseName: formState.exerciseName,
       sets: formState.sets,
@@ -34,7 +34,8 @@ export default function CreateExercise(props) {
     })
     .then((response) => {
       props.obtainExercises();
-      navigate("/exerciseLog");
+      props.reload();
+     
 
     })
     .catch((err)=>{
@@ -71,7 +72,7 @@ export default function CreateExercise(props) {
             </div>
             <div>
                 Number of Repetition -
-                <input type="text" value={formState.repetition} onChange={(e)=>{updateInput(e,"repetition")}} />
+                <input type="number" value={formState.repetition} onChange={(e)=>{updateInput(e,"repetition")}} />
             </div>
             <div>
                 Amount of Rest -
@@ -79,7 +80,7 @@ export default function CreateExercise(props) {
             </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={sendExerciseInfo}>Submit</Button>
+          <Button onClick={sendExerciseInfo}>Add Exercise</Button>
           <Button onClick={props.onHide}>Close</Button>
         </Modal.Footer>
     </Modal>

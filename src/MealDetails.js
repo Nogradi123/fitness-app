@@ -12,7 +12,7 @@ export default function MealDetails({obtainMeals}) {
     const [isShown, setIsShown] = useState(false);
 
     const fetchMealDetails = () => {
-        axios.get("https://fittrackserver.onrender.com/nutrition/"+id)
+        axios.get("http://localhost:4200/nutrition/"+id)
         .then((response) => {
             console.log(response.data);
             setTheMeal(response.data);

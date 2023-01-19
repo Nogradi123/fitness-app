@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import UserContext from './contexts/UserContext';
+
 import Button from 'react-bootstrap/Button'
 import CreateExercise from './createExercise';
 
@@ -14,7 +14,7 @@ export default function ExerciseLog() {
     const [exercise, setExercise] = useState([]);
 
     const obtainExercises = () => {
-        axios.get("https://fittrackserver.onrender.com/exercise/exercise")
+        axios.get("http://localhost:4200/exercise/exercise")
         .then((response) => {
             setExercise(response.data);
         })
@@ -30,7 +30,7 @@ export default function ExerciseLog() {
 
     const deleteExercise = (theID) =>{
         console.log(theID);
-        axios.post("https://fittrackserver.onrender.com/exercise/delete", {id:theID})
+        axios.post("http://localhost:4200/exercise/delete", {id:theID})
         .then((response)=>{
             console.log(response);
             obtainExercises();
@@ -38,6 +38,14 @@ export default function ExerciseLog() {
         .catch((err)=>{
             console.log(err);
         })
+    }
+    const reload = () => {
+        window.location.reload();
+    }
+
+    const onHide = () => {
+        setModalShow(false);
+        reload();
     }
 
     console.log({exercise})
@@ -59,7 +67,7 @@ export default function ExerciseLog() {
          <Button variant="primary" onClick={() => setModalShow(true)}>
             Add Exercise
         </Button>
-        <CreateExercise show={modalShow} onHide={() => setModalShow(false)} />
+        <CreateExercise show={modalShow} onHide={onHide} />
 
         </div>
         {listOfExercises}
