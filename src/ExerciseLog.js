@@ -14,7 +14,7 @@ export default function ExerciseLog() {
     const [exercise, setExercise] = useState([]);
 
     const obtainExercises = () => {
-        axios.get("http://localhost:4200/exercise/exercise")
+        axios.get("https://fittrackserver.onrender.com/exercise/exercise")
         .then((response) => {
             setExercise(response.data);
         })
@@ -30,7 +30,7 @@ export default function ExerciseLog() {
 
     const deleteExercise = (theID) =>{
         console.log(theID);
-        axios.post("http://localhost:4200/exercise/delete", {id:theID})
+        axios.post("https://fittrackserver.onrender.com/exercise/delete", {id:theID})
         .then((response)=>{
             console.log(response);
             obtainExercises();

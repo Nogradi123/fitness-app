@@ -13,7 +13,7 @@ export default function ExerciseDetail({obtainExercises}) {
     const [isShown, setIsShown] = useState(false);
 
     const fetchExerciseDetails = () => {
-        axios.get("http://localhost:4200/exercise/"+id)
+        axios.get("https://fittrackserver.onrender.com/exercise/"+id)
         .then((response) => {
             console.log(response.data);
             setTheExercise(response.data);

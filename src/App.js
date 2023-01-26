@@ -25,7 +25,7 @@ function App(props) {
   const [meals, setMeal] = useState([]);
 
   const obtainMeals = () => {
-    axios.get("http://localhost:4200/nutrition/mealItem")
+    axios.get("https://fittrackserver.onrender.com/nutrition/mealItem")
     .then((response) => {
         setMeal(response.data);
     })
