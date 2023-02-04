@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import UserContext from './contexts/UserContext';
-import profileImg from './images/profileimg.png';
+
+import UserContext from '../contexts/UserContext';
+
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import Button from 'react-bootstrap/Button';
+
 
 
 
@@ -24,7 +24,7 @@ export default function Navbars() {
               {!theUser && <Nav.Link href='/login'>Login</Nav.Link>}
               {theUser && <Nav.Link onClick={logout}>Logout</Nav.Link>}
               <NavDropdown title="More" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/library">Exercise Library</NavDropdown.Item>
+                
                 <NavDropdown.Item href="/recipies">
                   Recipie Library
                 </NavDropdown.Item>

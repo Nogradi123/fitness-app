@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CreateMealEntry from './CreateMealEntry';
 import Button from 'react-bootstrap/Button'
@@ -14,7 +14,7 @@ export default function NutritionLog({meals, obtainMeals}) {
 
     const deleteMealEntry = (theID) =>{
         console.log(theID);
-        axios.post("https://fittrackserver.onrender.com/nutrition/delete", {id:theID})
+        axios.post("http://localhost:4200/nutrition/delete", {id:theID})
         .then((response)=>{
             console.log(response);
             obtainMeals();

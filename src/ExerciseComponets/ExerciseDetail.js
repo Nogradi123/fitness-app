@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
@@ -13,7 +14,7 @@ export default function ExerciseDetail({obtainExercises}) {
     const [isShown, setIsShown] = useState(false);
 
     const fetchExerciseDetails = () => {
-        axios.get("https://fittrackserver.onrender.com/exercise/"+id)
+        axios.get("http://localhost:4200/exercise/"+id)
         .then((response) => {
             console.log(response.data);
             setTheExercise(response.data);
@@ -51,7 +52,7 @@ export default function ExerciseDetail({obtainExercises}) {
             </div>
             <div>
                 <Button onClick={handleClick}>Edit Inputs</Button>
-                {isShown && <EditExercise exercise={theExercise} obtainExercises={obtainExercises} stopEditing={setIsShown}/>}
+                {isShown && <EditExercise exercise={theExercise} obtainExercises={obtainExercises} stopEditing={stopEditing}/>}
             </div>
     
         </div>

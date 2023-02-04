@@ -20,7 +20,7 @@ export default function CreateMealEntry(props) {
 
 
   const sendMealInfo = () => {
-    axios.post("https://fittrackserver.onrender.com/nutrition/create", {
+    axios.post("http://localhost:4200/nutrition/create", {
      foodName: formState.foodName,
      serving: formState.serving,
      measurement: formState.measurement

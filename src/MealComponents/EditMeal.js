@@ -11,7 +11,7 @@ export default function EditMeal({theMeal, obtainMeals}) {
     }
 
     const submitForm = () => {
-        axios.post("https://fittrackserver.onrender.com/nutrition/edit/"+theMeal._id, {
+        axios.post("http://localhost:4200/nutrition/edit/"+theMeal._id, {
             foodName: formState.foodName,
             serving: formState.serving,
             measurement: formState.measurement

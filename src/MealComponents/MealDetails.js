@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
@@ -12,7 +13,7 @@ export default function MealDetails({obtainMeals}) {
     const [isShown, setIsShown] = useState(false);
 
     const fetchMealDetails = () => {
-        axios.get("https://fittrackserver.onrender.com/nutrition/"+id)
+        axios.get("http://localhost:4200/nutrition/"+id)
         .then((response) => {
             console.log(response.data);
             setTheMeal(response.data);
@@ -47,7 +48,7 @@ export default function MealDetails({obtainMeals}) {
             </div>
             <div>
                 <button onClick={handleClick}>Edit Inputs</button>
-                {isShown && <EditMeal theMeal={theMeal} obtainMeals={obtainMeals} stopEditing={setIsShown}/>}
+                {isShown && <EditMeal theMeal={theMeal} obtainMeals={obtainMeals} stopEditing={stopEditing}/>}
             </div>
     
         </div>

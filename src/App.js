@@ -1,21 +1,20 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import Navbars from './Navbar';
-import LandingPage from './LandingPage';
+import Navbars from './LandingPage/Navbar';
+import LandingPage from './LandingPage/LandingPage';
 import SignUp from './SignUp';
 import Login from './Login';
-import CreateExercise from './createExercise';
-import ExerciseDetail from './ExerciseDetail';
-import ExerciseLog from './ExerciseLog';
+import CreateExercise from './ExerciseComponets/createExercise';
+import ExerciseDetail from './ExerciseComponets/ExerciseDetail';
+import ExerciseLog from './ExerciseComponets/ExerciseLog';
 import ExerciseLibrary from './SearchExercises';
 import { Routes, Route } from "react-router-dom";
 import { UserProvider} from './contexts/UserContext';
-import NutritionLog from './NutritionLog';
-import CreateMealEntry from './CreateMealEntry';
-import MealDetails from './MealDetails';
-import EditMeal from './EditMeal';
-import Test from './Test';
+import NutritionLog from './MealComponents/NutritionLog';
+import CreateMealEntry from './MealComponents/CreateMealEntry';
+import MealDetails from './MealComponents/MealDetails';
+import EditMeal from './MealComponents/EditMeal';
 import SearchRecipies from './SearchRecipes';
 import { useState, useEffect } from 'react';
 
@@ -25,7 +24,7 @@ function App(props) {
   const [meals, setMeal] = useState([]);
 
   const obtainMeals = () => {
-    axios.get("https://fittrackserver.onrender.com/nutrition/mealItem")
+    axios.get("http://localhost:4200/nutrition/mealItem")
     .then((response) => {
         setMeal(response.data);
     })
@@ -62,7 +61,6 @@ if(!meals) {
           <Route path='/nutrition' element={<NutritionLog meals={meals} obtainMeals={obtainMeals}/>} />
           <Route path='/createMealEntry' element={<CreateMealEntry />} />
           <Route path="/nutrition/:id" element={<MealDetails meals={meals} obtainMeals={obtainMeals}/>} />
-          <Route path="/test" element={<Test />}/>
           <Route path="/editMeal" element={<EditMeal />} />
         </Routes>
 

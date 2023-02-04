@@ -1,15 +1,18 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import dumbbell from './images/dumbbell.png';
-import nutritionicon from './images/nutritionicon.png';
-import searchicon from './images/searchicon.png';
 
+import Card from 'react-bootstrap/Card';
+import dumbbell from '../images/dumbbell.png';
+import nutritionicon from '../images/nutritionicon.png';
+import searchicon from '../images/searchicon.png';
+import ExerciseLibrary from '../ExerciseLibrary';
 
 export default function Containers() {
   return (
 
     <>
+    <div>
+      {<ExerciseLibrary />}
+    </div>
         <div className='about'>
           <h1 className='about-title'>About</h1>
         </div>  

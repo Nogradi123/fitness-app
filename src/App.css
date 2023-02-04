@@ -76,13 +76,20 @@ a {
   width: 33vw;
   height: 45px;
   font-size: larger;
-  border: 2px solid black;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+#exercise-container {
+  background-color: black;
 }
 
 .search-exercise {
   width: 8vw;
   height: 45px;
-  border: 2px solid black;
+  border: 1px solid black;
+  border-radius: 15px;
   background-color: black;
   color: white
 }
@@ -92,28 +99,28 @@ a {
   background-color: white;
 }
 
-.container {
+.cards {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  margin-bottom: 10px;
+  
+  overflow-x: scroll;
 }
 
-.search-card {
-  width: 350px;
-  height: 350px;
-  padding: 5px;
-  border-radius: 10px;
-  margin-left: 1rem;
-  margin-bottom: 2rem;
+
+.card {
+  display: flex;
+  flex: 0 0 30%;
+  padding: 25px;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
+  scroll-snap-align: start;
+  transition: all 0.2s;
   text-align: center;
-  font-weight: bold;
-  border: 1px solid black;
-  box-shadow: 10px 5px #888888;
+  margin: 0 15px;
 }
 
 .cardImg {
-  width: 200px
+  width: 10px
 }
 
 

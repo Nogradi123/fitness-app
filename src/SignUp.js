@@ -22,7 +22,7 @@ export default function SignUp() {
     }
 
     const submitSignupForm = () =>{
-        axios.post("https://fittrackserver.onrender.com/auth/signup", {
+        axios.post("http://localhost:4200/auth/signup", {
             username: formState.username,
             password: formState.password,
             email: formState.email,

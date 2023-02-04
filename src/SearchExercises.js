@@ -27,7 +27,7 @@ export default function SearchExercises() {
     return (
     
 
-        <Card className = "search-card" style={{width: '18rem'}}>
+        <Card className = "card" style={{width: '18rem'}}>
           <Card.Img variant='top' src={theExercise.gifUrl} className='cardImg'/>
           <Card.Body>
             <Card.Title>{theExercise.name.toUpperCase()}</Card.Title>
@@ -44,7 +44,7 @@ export default function SearchExercises() {
 })
 
   return (
-    <>
+    <div id='exercise-container'>
       <div className='search-header'>
         <h1>Search Exercises</h1>
       </div>
@@ -52,9 +52,11 @@ export default function SearchExercises() {
         <input className="exercise-input" type="text" value={search} onChange={(e) => setSearch(e.target.value.toLowerCase())} />
         <button className='search-exercise'onClick={handleSearch}>Search</button>
       </div>
-      <div className='container'>
+      <div className='cards'>
         {allExercises}
       </div>
-    </>
+
+    </div>
+    
   )
 }
